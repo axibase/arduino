@@ -25,7 +25,7 @@ char pass[] = "ssidPass";       // your network password
 
 Install mqtt-server and mqtt-subscription client, [mosquitto](http://mosquitto.org/) for example. You can find installation instruction on [official project page](http://mosquitto.org/download/).
 
-Go to projectDirectory/mqtt/ and run start_mqtt.sh script:
+Go to projectDirectory/dataTransmission/ and run start_mqtt.sh script:
 ```bash
 ./start_mqtt.sh > mqtt.log 2>&1 &
 ```
