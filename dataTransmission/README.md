@@ -13,7 +13,9 @@ char ssid[] = "ssid";           //  your network SSID (name)
 char pass[] = "ssidPass";       // your network password
 ```
 
-######  Step 3: Replace uniqID template with your personal ID. You can get it using [GUID generator](https://www.guidgenerator.com/online-guid-generator.aspx). After you got an ID, remove last 13 letters ( last "-" and everything that comes after).
+######  Step 3: Replace uniqID template with your personal ID:
+
+You can get personal ID using [GUID generator](https://www.guidgenerator.com/online-guid-generator.aspx). After you got an ID, remove last 13 letters ( last "-" and everything that comes after).
 
 ```bash
 String uniqID = "xxxxxxxx-xxxx-xxxx-xxxx";
@@ -39,7 +41,9 @@ Install it:
 git clone https://github.com/axibase/arduino
 ```
 
-######  Step 2: Replace ssid and pass templates with your real ssid and password, or modify the sketch to use [ethernet shield](https://www.arduino.cc/en/Main/ArduinoEthernetShield) instead of [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield)
+######  Step 2: Modify arduino/dataTransmission/atsd_tcp_example/atsd_tcp_example.ino:
+
+Replace ssid and pass templates with your real ssid and password, or modify the sketch to use [ethernet shield](https://www.arduino.cc/en/Main/ArduinoEthernetShield) instead of [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield)
 ```bash
 char ssid[] = "ssid";           //  your network SSID (name)
 char pass[] = "ssidPass";       // your network password
