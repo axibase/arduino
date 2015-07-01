@@ -5,6 +5,8 @@ Download project:
 git clone https://github.com/axibase/arduino
 ```
 
+Modify arduino/dataTransmission/atsd_mqtt_example/atsd_mqtt_example.ino:
+
 Replace ssid and pass templates with your real ssid and password, or modify the sketch to use [ethernet shield](https://www.arduino.cc/en/Main/ArduinoEthernetShield) instead of [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield).
 ```bash
 char ssid[] = "ssid";           //  your network SSID (name)
@@ -17,15 +19,10 @@ Replace uniqID template by your personal ID. You can get it by [GUID generator](
 String uniqID = "xxxxxxxx-xxxx-xxxx-xxxx";
 ```
 
-Replace ssid and pass templates with your real ssid and password, or modify the sketch to use [ethernet shield](https://www.arduino.cc/en/Main/ArduinoEthernetShield) instead of [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield)
-```bash
-char ssid[] = "ssid";           //  your network SSID (name)
-char pass[] = "ssidPass";       // your network password
-```
 
 Install mqtt-server and mqtt-subscription client, [mosquitto](http://mosquitto.org/) for example. You can find installation instruction on [official project page](http://mosquitto.org/download/).
 
-Go to projectDirectory/dataTransmission/ and run start_mqtt.sh script:
+Go to arduino/dataTransmission/ and run start_mqtt.sh script:
 ```bash
 ./start_mqtt.sh > mqtt.log 2>&1 &
 ```
