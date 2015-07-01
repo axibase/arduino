@@ -13,14 +13,14 @@ char ssid[] = "ssid";           //  your network SSID (name)
 char pass[] = "ssidPass";       // your network password
 ```
 
-Replace uniqID template by your personal ID. You can get it by [GUID generator](https://www.guidgenerator.com/online-guid-generator.aspx). After you get ID, remove last 13 letters ( last "-" and all after it ).
+Replace uniqID template with your personal ID. You can get it using [GUID generator](https://www.guidgenerator.com/online-guid-generator.aspx). After you got an ID, remove last 13 letters ( last "-" and everything that comes after).
 
 ```bash
 String uniqID = "xxxxxxxx-xxxx-xxxx-xxxx";
 ```
 
 
-Install mqtt-server and mqtt-subscription client, [mosquitto](http://mosquitto.org/) for example. You can find installation instruction on [official project page](http://mosquitto.org/download/).
+Install mqtt-server and mqtt-subscription client, for example [mosquitto](http://mosquitto.org/). You can find installation instruction on [official project page](http://mosquitto.org/download/).
 
 Go to arduino/dataTransmission/ and run start_mqtt.sh script:
 ```bash
@@ -28,13 +28,13 @@ Go to arduino/dataTransmission/ and run start_mqtt.sh script:
 ```
 Ensure that script is placed on the same machine where atsd is installed.
 
-Upload sketch to your device by ArduinoIDE.
+Upload sketch to your device using ArduinoIDE.
 
 
 ####MQTT Library
 The sketches use [Joel Gaehwiler's MQTT library v1.5](https://github.com/256dpi/arduino-mqtt/releases/tag/v1.5.0).
 
-You can install it:
+Install it:
 
 1. Manually by downloading from [git](https://github.com/256dpi/arduino-mqtt).
 
@@ -54,10 +54,10 @@ char ssid[] = "ssid";           //  your network SSID (name)
 char pass[] = "ssidPass";       // your network password
 ```
 
-Upload sketch to your device by ArduinoIDE.
+Upload sketch to your device using ArduinoIDE.
 
 ##Hardware & Software
-All sketches was tested with [Arduino IDE v1.6.5](https://www.arduino.cc/en/Main/Software) and [arduino uno](http://www.arduino.cc/en/Main/ArduinoBoardUno) with [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield)
+All sketches were tested with [Arduino IDE v1.6.5](https://www.arduino.cc/en/Main/Software) and [arduino uno](http://www.arduino.cc/en/Main/ArduinoBoardUno) with [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield)
 
 
 
