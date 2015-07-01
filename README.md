@@ -2,5 +2,5 @@
 
 [Datacube](https://github.com/axibase/arduino/tree/master/datacube)
 
-[MQTT client](https://github.com/axibase/arduino/tree/master/mqtt)
+[Data transmission from Arduino devices to ATSD](https://github.com/axibase/arduino/tree/master/dataTransmission)
 
