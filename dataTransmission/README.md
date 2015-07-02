@@ -7,7 +7,7 @@ git clone https://github.com/axibase/arduino
 
 ###### Step 2: Modify sketch:
 
-Depends on mqtt/tcp protocol you will use, modify one of the follow file:
+Depends on mqtt/tcp protocol you will use, modify one of the following file:
 
 ```
  ./arduino/dataTransmission/atsd_tcp_example/atsd_tcp_example.ino
