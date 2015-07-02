@@ -22,11 +22,18 @@ char pass[] = "ssidPass";       // your network password
 
 ######  Step 3: Set uniqID:
 
-Also replace unicID template with your personal ID in selected sketch.
+Also replace uniqID template with your personal ID in selected sketch.
 You can get personal ID using [GUID generator](https://www.guidgenerator.com/online-guid-generator.aspx). After you got an ID, remove last 13 letters ( last "-" and everything that comes after).
 
-```bash
-String uniqID = "xxxxxxxx-xxxx-xxxx-xxxx";
+For example:
+
+Original:
+```
+3388eac3-a9cd-4292-93e1-c7a894c78330
+````
+Result:
+```
+String uniqID = "3388eac3-a9cd-4292-93e1";
 ```
 
 ######  Step 4: Upload sketch to your device using ArduinoIDE.
