@@ -62,7 +62,7 @@ Make sure ATSD is running. You are able to create rules in [ATSD](http://axibase
 1. Go to ATSD web interface and open "Rules" tab.
 ![ATSD Rules](https://github.com/axibase/arduino/blob/master/dataTransmission/images/rules.png)
 
-2. Click the `Create` button at the bottom of page. Or, click the `Import` button and choose the [mqttResponseRule.xml](https://github.com/axibase/arduino/blob/master/dataTransmission/mqttResponseRule.xml) file  create rule. If you will import rule from file, you can skip stage 3-4.
+2. Click the `Create` button at the bottom of page. Or, click the `Import` button and choose the [mqttResponseRule.xml](https://github.com/axibase/arduino/blob/master/dataTransmission/mqttResponseRule.xml) file to  create the rule. If you will import rule from file, you can skip stage 3-4.
 ![create rule](https://github.com/axibase/arduino/blob/master/dataTransmission/images/rules_bottom.png)
 
 3. Complete the fields as shown on the following images. Ensure that "enabled" checkbox is marked.
