@@ -57,8 +57,7 @@ All sketches were tested with [Arduino IDE v1.6.5](https://www.arduino.cc/en/Mai
 
 You are able to [download](http://axibase.com/products/axibase-time-series-database/download-atsd/) and install [ATSD](http://axibase.com/products/axibase-time-series-database/) on your server. To send data by MQTT, you also should install any MQTT-broker, such as [mosquitto](http://mosquitto.org/). Installation how-to is available on [official mosquitto download page](http://mosquitto.org/download/).
 
-Make sure ATSD is running. 
-You can create rules in [ATSD](http://axibase.com/products/axibase-time-series-database/) to send mqtt message when events occur.
+Make sure ATSD is running. You are able to create rules in [ATSD](http://axibase.com/products/axibase-time-series-database/) to send mqtt message when events occur.
 
 1. Go to ATSD web interface and open "Rules" tab.
 ![ATSD Rules](https://github.com/axibase/arduino/blob/master/dataTransmission/images/rules.png)
@@ -69,7 +68,7 @@ You can create rules in [ATSD](http://axibase.com/products/axibase-time-series-d
 3. Complete the fields as shown on the following images. Ensure that "enabled" checkbox is marked.
 ![rule overview](https://github.com/axibase/arduino/blob/master/dataTransmission/images/overview.png)
 
-4. Insert the row: `mosquitto_pub -t iot/${entity}/sub -m "TEST ALERT!"` in each action field.
+4. Insert the row: `mosquitto_pub -t iot/${entity}/sub -m "TEST ALERT!"` in each action field and press `Save` button.
 ![action](https://github.com/axibase/arduino/blob/master/dataTransmission/images/action.png)
 
 5. All done. Your arduino device will print alert message to your serial monitor after each publishing.
