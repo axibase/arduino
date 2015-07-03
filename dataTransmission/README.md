@@ -58,10 +58,7 @@ All sketches were tested with [Arduino IDE v1.6.5](https://www.arduino.cc/en/Mai
 You are able to [download](http://axibase.com/products/axibase-time-series-database/download-atsd/) and install [ATSD](http://axibase.com/products/axibase-time-series-database/) on your server. To send data by MQTT, you also should install any MQTT-broker, such as [mosquitto](http://mosquitto.org/). Installation how-to is available on [official mosquitto download page](http://mosquitto.org/download/).
 
 Make sure ATSD is running. 
-You can create rules in [ATSD](http://axibase.com/products/axibase-time-series-database/) to send web notifications when events occur.
-For example, to show the state of your system.
-
-The follow instruction will show how to monitor your cpu.
+You can create rules in [ATSD](http://axibase.com/products/axibase-time-series-database/) to send mqtt message when events occur.
 
 1. Go to ATSD web interface and open "Rules" tab.
 ![ATSD Rules](https://github.com/axibase/arduino/blob/master/dataTransmission/images/rules.png)
