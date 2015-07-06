@@ -59,7 +59,7 @@ void loop() {
   client.publish(pubTopic,data);
   Serial.println("sended.");
 //  Uncomment to use sensors:
-//  delay(1000);
+//  delay(500);
 //  String sensorsData = "debug series e:" + uniqID + " m:millis=" + (String)getSensorsData();
 //  Serial.println("sending row: '" + sensorsData + "' ...");
 //  client.publish(pubTopic,sensorsData);
