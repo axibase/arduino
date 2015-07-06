@@ -3,6 +3,14 @@
 #include <WiFi.h>
 #include <Bridge.h>
 
+//UNCOMMENT TO USE DHT SENSORS:
+//#include "DHT.h"
+// //Uncomment whatever type you're using!
+//#define DHTTYPE DHT11   // DHT 11
+//#define DHTTYPE DHT22   // DHT 22  (AM2302)
+//#define DHTTYPE DHT21   // DHT 21 (AM2301)
+//DHT dht(DHTPIN, DHTTYPE);
+
 //wifi settings
 char ssid[] = "ssid";          //  your network SSID (name)
 char pass[] = "ssidPass";      // your network password
@@ -20,7 +28,8 @@ MQTTClient client(mqttServer.c_str(), 1883, net);
 
 void setup() {
   Serial.begin(9600);
-
+//  dht.begin(); //Uncomment to use sensors DHT sensors.
+  
   while ( status != WL_CONNECTED) {
     Serial.println();
     Serial.print("Connecting by WPA to SSID: " + (String)ssid + " ...");
@@ -48,15 +57,23 @@ void loop() {
   Serial.println("sending row: '" + data + "' ...");
   client.publish(pubTopic,data);
   Serial.println("sended.");
+//  Uncomment to use sensors:
+//  String sensorsData = "debug series e:" + uniqID + " m:millis=" + (String)getSensorsData();
+//  Serial.println("sending row: '" + sensorsData + "' ...");
+//  client.publish(pubTopic,sensorsData);
+//  Serial.println("sended.");
   client.loop();
   delay(1000);
 }
 
-
-
 double getData() {
   return 200.0*sin((double)millis()/100000.0) + 300.0;
 }
+
+//UNCOMMENT TO USE DHT SENSORS:
+//float getSensorsData() {
+//  return dht.readTemperature();
+//}
 
 void messageReceived(String topic, String payload, char * bytes, unsigned int length) {
   Serial.print("incomming: ");
@@ -65,4 +82,3 @@ void messageReceived(String topic, String payload, char * bytes, unsigned int le
   Serial.print(payload);
   Serial.println();
 }
-

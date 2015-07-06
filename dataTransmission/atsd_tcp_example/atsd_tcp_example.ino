@@ -1,6 +1,16 @@
 #include <SPI.h>
 #include <WiFi.h>
 
+//UNCOMMENT TO USE DHT SENSORS:
+//#include "DHT.h"
+// //Uncomment whatever type you're using!
+//#define DHTTYPE DHT11   // DHT 11
+//#define DHTTYPE DHT22   // DHT 22  (AM2302)
+//#define DHTTYPE DHT21   // DHT 21 (AM2301)
+//#define DHTPIN 2
+//DHT dht(DHTPIN, DHTTYPE);
+
+
 //wifi settings
 char ssid[] = "ssid";           //  your network SSID (name)
 char pass[] = "ssidPass";       // your network password
@@ -16,6 +26,7 @@ WiFiClient net;
 
 void setup() {
   Serial.begin(9600);
+//  dht.begin(); //Uncomment to use sensors DHT sensors.
 
   while ( status != WL_CONNECTED) {
     Serial.println();
@@ -39,6 +50,12 @@ void loop() {
     net.println(data);
     net.println();
     Serial.println("sended.");
+//    Uncomment to use sensors:
+//    String sensorsData = "debug series e:" + uniqID + " m:millis=" + (String)getSensorsData();
+//    Serial.print("sending row: '" + sensorsData + "' ...");
+//    net.println(sensorsData);
+//    net.println();
+//    Serial.println("sended.");
   } else {
     Serial.println("disconnected from server.");
     net.stop();
@@ -54,6 +71,14 @@ void loop() {
   delay(1000);
 }
 
+float getData() {
+  return 200.0*sin((double)millis()/100000.0) + 300.0;
+}
+
+//UNCOMMENT TO USE DHT SENSORS:
+//float getSensorsData() {
+//  return dht.readTemperature();
+//}
 
 String getResponse() {
   String response = "";
@@ -61,10 +86,6 @@ String getResponse() {
     response += (char)net.read();
   }
   return response;
-}
-
-double getData() {
-  return 200.0*sin((double)millis()/100000.0) + 300.0;
 }
 
 
