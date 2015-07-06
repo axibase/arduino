@@ -51,6 +51,7 @@ void loop() {
     net.println();
     Serial.println("sended.");
 //    Uncomment to use sensors:
+//    delay(500);
 //    String sensorsData = "debug series e:" + uniqID + " m:millis=" + (String)getSensorsData();
 //    Serial.print("sending row: '" + sensorsData + "' ...");
 //    net.println(sensorsData);
