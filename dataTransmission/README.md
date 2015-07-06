@@ -74,7 +74,7 @@ Make sure ATSD is running. Create rules in [ATSD](http://axibase.com/products/ax
 5. All done. Your arduino device will print an alert message to your serial monitor after each publishing.
 
 ##Sensors
-How to connect and use DHT sensors with DHT library you find on [follow page](https://learn.adafruit.com/dht/using-a-dhtxx-sensor).
+How to connect and use DHT sensors with DHT library you find on [this page](https://learn.adafruit.com/dht/using-a-dhtxx-sensor).
 
 
 
