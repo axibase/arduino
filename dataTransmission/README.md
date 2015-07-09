@@ -67,7 +67,10 @@ Make sure ATSD is running. Create rules in [ATSD](http://axibase.com/products/ax
 4. Insert the row: `mosquitto_pub -t iot/${entity}/sub -m "TEST ALERT!"` in each action field on `Actions` tab and press the `Save` button.
 ![action](https://github.com/axibase/arduino/blob/master/dataTransmission/images/action.png)
 
-5. All done. Your arduino device will print an alert message to your serial monitor after each publishing. If you will connect to your mosquitto server by subscription client:
+5. Create your custom portal like [this](http://axibase.com/chartlab/fe9ebce1).
+![chartLab](https://github.com/axibase/arduino/blob/master/dataTransmission/images/chartLab.png)
+
+6. All done. Your arduino device will print an alert message to your serial monitor after each publishing. If you will connect to your mosquitto server by subscription client:
 ```
 mosquitto_sub -t '#'
 ```
