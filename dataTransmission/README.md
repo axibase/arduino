@@ -15,7 +15,7 @@ Depends on mqtt/tcp protocol you will use, modify one of the following file:
 ```
 
 Replace ssid and pass templates with your real ssid and password, or modify the sketch to use [ethernet shield](https://www.arduino.cc/en/Main/ArduinoEthernetShield) instead of [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield).
-```bash
+```
 char ssid[] = "ssid";           //  your network SSID (name)
 char pass[] = "ssidPass";       // your network password
 ```
@@ -23,32 +23,22 @@ char pass[] = "ssidPass";       // your network password
 ######  Step 3: Set uniqID:
 
 Also replace uniqID template with your personal ID in selected sketch.
-You can get personal ID using [GUID generator](https://www.guidgenerator.com/online-guid-generator.aspx). After you got an ID, remove last 13 letters ( last "-" and everything that comes after).
-
-For example:
-
-Original:
+You can get personal ID using [GUID generator](https://www.guidgenerator.com/online-guid-generator.aspx).
 ```
-3388eac3-a9cd-4292-93e1-c7a894c78330
-````
-Result:
-```
-String uniqID = "3388eac3-a9cd-4292-93e1";
+String uniqID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
 ```
 
 ######  Step 4: Upload sketch to your device using ArduinoIDE.
 
 
 ##MQTT Library
-The sketches use [Joel Gaehwiler's MQTT library v1.5](https://github.com/256dpi/arduino-mqtt/releases/tag/v1.5.0).
-
-Install it:
-
-1. Manually by downloading from [git](https://github.com/256dpi/arduino-mqtt).
-
-2. By using [Arduino IDE v1.6.5](https://www.arduino.cc/en/Main/Software) or letter in *Sketch* -> *Include Library* -> *Manage Libraries...* .Input "MQTT library for Arduino" in filter, and press "Install" on appeared library. 
-
-
+The sketches use [modified Gaehwiller's MQTT library v1.5](https://github.com/Sild/arduino-mqtt). 
+You can install it by following commands:
+```
+git clone https://github.com/Sild/arduino-mqtt
+mv arduino-mqtt $ARDUINO_IDE_FOLDER/libraries/MQTT
+```
+We are working on accept our modification to main thread, and it will available by ArduinoIDE libraries manager as soon as posible.
 
 ##Hardware & Software
 All sketches were tested with [Arduino IDE v1.6.5](https://www.arduino.cc/en/Main/Software) and [arduino uno](http://www.arduino.cc/en/Main/ArduinoBoardUno) with [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield)
