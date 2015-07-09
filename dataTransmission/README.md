@@ -74,13 +74,13 @@ In sketch, be sure to specify the right data pin (2 by default):
 
 To send data using MQTT, you need to install the [mosquitto](http://mosquitto.org/) MQTT-broker. Installation guide is available on the [official mosquitto download page](http://mosquitto.org/download/).
 
-1. Once ATSD is running, navigate to the Rules page located on the main menu of the ATSD UI to a create rule in the [ATSD Rule Engine](http://axibase.com/products/axibase-time-series-database/rule-engine/), that will send mqtt messages when events occur.
+* Once ATSD is running, navigate to the Rules page located on the main menu of the ATSD UI to a create rule in the [ATSD Rule Engine](http://axibase.com/products/axibase-time-series-database/rule-engine/), that will send mqtt messages when events occur.
 
-2. Click the `Import` button and select the [mqttResponseRule.xml](https://github.com/axibase/arduino/blob/master/dataTransmission/mqttResponseRule.xml) file to create the rule.
+* Click the `Import` button and select the [mqttResponseRule.xml](https://github.com/axibase/arduino/blob/master/dataTransmission/mqttResponseRule.xml) file to create the rule.
 
 [You can verify that all the fields of your Rule are completed correctly or setup the rule manually here](https://github.com/axibase/arduino/blob/master/dataTransmission/atsd_rules.md)
 
-3. Navigate to the Portals page located under Admin on the main menu in ATSD and create a visualization portal for your Arduino data.
+* Navigate to the Portals page located under Admin on the main menu in ATSD and create a visualization portal for your Arduino data.
 
 Copy and paste the following code, substituting the `entity` values with your `entityID`, then click SAVE.
 ```
@@ -111,7 +111,7 @@ Resulting Portal:
 
 Once the portal is created, it can be found in the Portals dropdown list located on the main menu in ATSD.
 
-6. All done. Your arduino device will print an alert message to your serial monitor after each iteration. 
+* All done. Your arduino device will print an alert message to your serial monitor after each iteration. 
 
 You can monitor the data using the visualization portal that you created. Which can be found in the Portals dropdown list located on the main menu in ATSD.
 
