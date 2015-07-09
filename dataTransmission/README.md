@@ -74,7 +74,7 @@ In sketch, be sure to specify the right data pin (2 by default):
 
 To send data using MQTT, you need to install the [mosquitto](http://mosquitto.org/) MQTT-broker. Installation guide is available on the [official mosquitto download page](http://mosquitto.org/download/).
 
-* Once ATSD is running, navigate to the Rules page located on the main menu of the ATSD UI to a create rule in the [ATSD Rule Engine](http://axibase.com/products/axibase-time-series-database/rule-engine/), that will send mqtt messages when events occur.
+* Once ATSD is running, navigate to the Rules page located on the main menu of the ATSD UI to a create rule in the [ATSD Rule Engine](http://axibase.com/products/axibase-time-series-database/rule-engine/), that will send MQTT messages when events occur.
 
 * Click the `Import` button and select the [mqttResponseRule.xml](https://github.com/axibase/arduino/blob/master/dataTransmission/mqttResponseRule.xml) file to create the rule.
 
