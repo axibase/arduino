@@ -61,7 +61,7 @@ void loop() {
   if(client.connected()) {
     //the data will be insert with measurement server timestamp
     String data = "series e:" + uniqID + " m:millis=" + (String)getData();
-    //uncomment to use sensor
+//UNCOMMENT TO USE DHT SENSORS:
 //    String data = "series e:" + uniqID + " m:millis=" + (String)getData() + " m:temperature=" + (String)getTemperature() + " m:humidity=" + (String)getHumidity();  
     Serial.println("sending row: '" + data + "' ...");
     client.publish(pubTopic,data);
