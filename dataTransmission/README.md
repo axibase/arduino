@@ -1,5 +1,8 @@
 ##Usage
 
+##Hardware & Software
+All sketches were tested with [Arduino IDE v1.6.5](https://www.arduino.cc/en/Main/Software) and [arduino uno](http://www.arduino.cc/en/Main/ArduinoBoardUno) with a [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield)
+
 ###### Step 1: Download the Axibase Arduino project: 
 ```bash
 git clone https://github.com/axibase/arduino
@@ -7,33 +10,42 @@ git clone https://github.com/axibase/arduino
 
 ###### Step 2: Modify the sketch:
 
-Depending on which protocol you will use, mqtt or tcp, modify one of the following file:
+Depending on which protocol you will use, mqtt or tcp, modify one of the following files:
+
+*mqtt allows bidirectional messages, which allows you to deliver messages to the microcontroller from the ATSD server.*
 
 ```
  ./arduino/dataTransmission/atsd_tcp_example/atsd_tcp_example.ino
  ./arduino/dataTransmission/atsd_mqtt_example/atsd_mqtt_example.ino
 ```
 
-Replace ssid and pass templates with your real ssid and password, or modify the sketch to use the [ethernet shield](https://www.arduino.cc/en/Main/ArduinoEthernetShield) instead of [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield).
+Replace ssid and pass parameters with actual ssid and password, or modify the sketch to use the [ethernet shield](https://www.arduino.cc/en/Main/ArduinoEthernetShield) instead of [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield).
 ```
 char ssid[] = "ssid";           //  your network SSID (name)
 char pass[] = "ssidPass";       // your network password
 ```
 
-######  Step 3: Setup your entityID:
+######  Step 3: Generate a unique GUID for your microcontroller:
 
-Replace entityID template with your personal ID in the sketch that you chose.
-You can get your personal ID using the [GUID generator](https://www.guidgenerator.com/online-guid-generator.aspx).
+Generate a unique GUID for your microcontroller using the [GUID generator](https://www.guidgenerator.com/online-guid-generator.aspx).
+
+
+######  Step 4: Setup your entityID:
+
+Replace entityID parameter with the generated unique GUID in the sketch that you chose.
+
+*NOTE: Be sure to set a unique entityID for each microcontroller*
+
 ```
 String entityID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
 ```
 
-######  Step 4: Upload sketch to your device using ArduinoIDE.
+######  Step 5: Upload sketch to your device using ArduinoIDE.
 
 
 ##MQTT Library
 The sketches use [modified Gaehwiller's MQTT library v1.5](https://github.com/Sild/arduino-mqtt). 
-You can install the libraries using the following commands:
+This library was modified to support message length of greater than 90 characters. You can install the libraries using the following commands:
 ```
 git clone https://github.com/Sild/arduino-mqtt
 mv arduino-mqtt $ARDUINO_IDE_FOLDER/libraries/MQTT
@@ -45,10 +57,16 @@ If you are using a DHT11 sensor, you can uncomment a few lines in the code to en
 //UNCOMMENT TO USE DHT SENSORS:
 //#include "DHT.h"
 ```
-(See how to connect the sensor)[/dataTransmission#sensors]
 
-##Hardware & Software
-All sketches were tested with [Arduino IDE v1.6.5](https://www.arduino.cc/en/Main/Software) and [arduino uno](http://www.arduino.cc/en/Main/ArduinoBoardUno) with a [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield)
+###Connecting the DHT11 Sensor
+Connect your DHT11 sensor to your Arduino device as displayed on the following image:
+
+![dht11](https://github.com/axibase/arduino/blob/master/dataTransmission/images/dht11.png)
+
+In sketch, be sure to specify the right data pin (2 by default):
+```
+//#define DHTPIN 2
+```
 
 ##Test Arduino with your [ATSD](http://axibase.com/products/axibase-time-series-database/) instance
 
@@ -114,15 +132,7 @@ series e:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx m:millis=304.52
 ```
 You can monitor the data using the visualization portal that you created. Which can be found in the Portals dropdown list located on the main menu in ATSD.
 
-##DHT11 Sensor
-Connect your DHT11 sensor to your Arduino device as displayed on the following image:
 
-![dht11](https://github.com/axibase/arduino/blob/master/dataTransmission/images/dht11.png)
-
-In sketch, be sure to specify the right data pin (2 by default):
-```
-//#define DHTPIN 2
-```
 
 
 
