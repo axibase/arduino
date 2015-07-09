@@ -3,6 +3,7 @@
 #include <WiFi.h>
 #include <Bridge.h>
 
+
 //UNCOMMENT TO USE DHT SENSORS:
 //#include "DHT.h"
 // //Uncomment whatever type you're using!
@@ -12,20 +13,23 @@
 //#define DHTPIN 2
 //DHT dht(DHTPIN, DHTTYPE);
 
+
 //wifi settings
 char ssid[] = "ssid";          //  your network SSID (name)
 char pass[] = "ssidPass";      // your network password
 int status = WL_IDLE_STATUS;   // the Wifi radio's status
 
 //mqtt connection settings
-String uniqID = "xxxxxxxx-xxxx-xxxx-xxxx";
+String uniqID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
 String mqttServer = "nur.axibase.com";
 int mqttServerPort = 1883;
 String pubTopic = "iot/" + uniqID + "/pub";
 String subTopic = "iot/" + uniqID + "/sub";
 
+
 WiFiClient net;
 MQTTClient client(mqttServer.c_str(), 1883, net);
+
 
 void setup() {
   Serial.begin(9600);
@@ -54,18 +58,21 @@ void setup() {
 }
 
 void loop() {
-  String data = "debug series e:" + uniqID + " m:millis=" + (String)getData();
-  Serial.println("sending row: '" + data + "' ...");
-  client.publish(pubTopic,data);
-  Serial.println("sended.");
-//  Uncomment to use sensors:
-//  delay(500);
-//  String sensorsData = "debug series e:" + uniqID + " m:millis=" + (String)getSensorsData();
-//  Serial.println("sending row: '" + sensorsData + "' ...");
-//  client.publish(pubTopic,sensorsData);
-//  Serial.println("sended.");
-  client.loop();
-  delay(1000);
+  if(client.connected()) {
+    //the data will be insert with measurement server timestamp
+    String data = "series e:" + uniqID + " m:millis=" + (String)getData();
+    //uncomment to use sensor
+//    String data = "series e:" + uniqID + " m:millis=" + (String)getData() + " m:temperature=" + (String)getTemperature() + " m:humidity=" + (String)getHumidity();  
+    Serial.println("sending row: '" + data + "' ...");
+    client.publish(pubTopic,data);
+    Serial.println("sended.");
+    client.loop();
+    delay(1000);
+  } else {
+    Serial.println("Disconnected from server. Require to restart device.");
+    while(true){delay(5000);}
+  }
+
 }
 
 double getData() {
@@ -73,8 +80,11 @@ double getData() {
 }
 
 //UNCOMMENT TO USE DHT SENSORS:
-//float getSensorsData() {
+//float getTemperature() {
 //  return dht.readTemperature();
+//}
+//float getHumidity() {
+//  return dht.readHumidity();
 //}
 
 void messageReceived(String topic, String payload, char * bytes, unsigned int length) {

@@ -1,6 +1,7 @@
 #include <SPI.h>
 #include <WiFi.h>
 
+
 //UNCOMMENT TO USE DHT SENSORS:
 //#include "DHT.h"
 // //Uncomment whatever type you're using!
@@ -17,12 +18,13 @@ char pass[] = "ssidPass";       // your network password
 int status = WL_IDLE_STATUS;    // the Wifi radio's status
 
 //mqtt connection settings
-String uniqID = "xxxxxxxx-xxxx-xxxx-xxxx";
+String uniqID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
 String atsdServer = "nur.axibase.com";
 int atsdPort = 8081;
 
 
 WiFiClient net;
+
 
 void setup() {
   Serial.begin(9600);
@@ -43,20 +45,23 @@ void setup() {
   }
 }
 
+
+
+
+
+
+
+
 void loop() {
   if(net.connected()) {
-    String data = "debug series e:" + uniqID + " m:millis=" + (String)getData();
+    //the data will be insert with measurement server timestamp
+    String data = "series e:" + uniqID + " m:millis=" + (String)getData();
+    //uncomment to use sensor
+//    String data = "series e:" + uniqID + " m:millis=" + (String)getData() + " m:temperature=" + (String)getSensorsData();  
     Serial.print("sending row: '" + data + "' ...");
     net.println(data);
     net.println();
     Serial.println("sended.");
-//    Uncomment to use sensors:
-//    delay(500);
-//    String sensorsData = "debug series e:" + uniqID + " m:millis=" + (String)getSensorsData();
-//    Serial.print("sending row: '" + sensorsData + "' ...");
-//    net.println(sensorsData);
-//    net.println();
-//    Serial.println("sended.");
   } else {
     Serial.println("disconnected from server.");
     net.stop();
@@ -77,8 +82,11 @@ float getData() {
 }
 
 //UNCOMMENT TO USE DHT SENSORS:
-//float getSensorsData() {
+//float getTemperature() {
 //  return dht.readTemperature();
+//}
+//float getHumidity() {
+//  return dht.readHumidity();
 //}
 
 String getResponse() {
