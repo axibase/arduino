@@ -38,7 +38,6 @@ You can install it by following commands:
 git clone https://github.com/Sild/arduino-mqtt
 mv arduino-mqtt $ARDUINO_IDE_FOLDER/libraries/MQTT
 ```
-We are working on getting our modifications accepted to main thread, it will available in ArduinoIDE library manager as soon as possible.
 
 ##DHT11 sensor
 If you are using DHT11 sensor, you are able to uncomment a few line in code to get data from sensors. Please read comments in sketch to figure out which line should be uncommented. For example:
@@ -68,10 +67,25 @@ Make sure ATSD is running. Create rules in [ATSD](http://axibase.com/products/ax
 4. Insert the row: `mosquitto_pub -t iot/${entity}/sub -m "TEST ALERT!"` in each action field on `Actions` tab and press the `Save` button.
 ![action](https://github.com/axibase/arduino/blob/master/dataTransmission/images/action.png)
 
-5. All done. Your arduino device will print an alert message to your serial monitor after each publishing.
+5. All done. Your arduino device will print an alert message to your serial monitor after each publishing. If you will connect to your mosquitto server by subscription client:
+```
+mosquitto_sub -t '#'
+```
+you will see the following messages:
+```
+series e:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx m:millis=304.52
+"TEST ALERT!"
+```
 
 ##Sensors
-How to connect and use DHT sensors with DHT library you find on [this ](https://learn.adafruit.com/dht/using-a-dhtxx-sensor) page.
+Connect sensor to arduino as on follow image:
+![dht11]](https://github.com/axibase/arduino/blob/master/dataTransmission/images/dht11.png)
+
+In sketch, set the right data pin (2 by default):
+```
+//#define DHTPIN 2
+```
+
 
 
 
