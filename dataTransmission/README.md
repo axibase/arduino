@@ -113,7 +113,9 @@ Once the portal is created, it can be found in the Portals dropdown list located
 
 You can monitor the data using the visualization portal that you created. Which can be found in the Portals dropdown list located on the main menu in ATSD.
 
-###Debugging MQTT If you will connect to your mosquitto server using a subscription client:
+###Debugging MQTT 
+
+If you will connect to your mosquitto server using a subscription client:
 ```
 mosquitto_sub -t '#'
 ```
