@@ -20,11 +20,11 @@ char pass[] = "ssidPass";      // your network password
 int status = WL_IDLE_STATUS;   // the Wifi radio's status
 
 //mqtt connection settings
-String uniqID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+String entityID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
 String mqttServer = "nur.axibase.com";
 int mqttServerPort = 1883;
-String pubTopic = "iot/" + uniqID + "/pub";
-String subTopic = "iot/" + uniqID + "/sub";
+String pubTopic = "iot/" + entityID + "/pub";
+String subTopic = "iot/" + entityID + "/sub";
 
 
 WiFiClient net;
@@ -46,7 +46,7 @@ void setup() {
     Serial.print(mqttServer);
     Serial.print(":");
     Serial.println(mqttServerPort);
-    client.connect(uniqID.c_str());
+    client.connect(entityID.c_str());
   }
   Serial.println("Connection with mqtt server established.");
   Serial.print("subscribing to topic: " + subTopic + " ...");
@@ -60,9 +60,9 @@ void setup() {
 void loop() {
   if(client.connected()) {
     //the data will be insert with measurement server timestamp
-    String data = "series e:" + uniqID + " m:millis=" + (String)getData();
+    String data = "series e:" + entityID + " m:millis=" + (String)getData();
 //UNCOMMENT TO USE DHT SENSORS:
-//    String data = "series e:" + uniqID + " m:millis=" + (String)getData() + " m:temperature=" + (String)getTemperature() + " m:humidity=" + (String)getHumidity();  
+//    String data = "series e:" + entityID + " m:millis=" + (String)getData() + " m:temperature=" + (String)getTemperature() + " m:humidity=" + (String)getHumidity();  
     Serial.println("sending row: '" + data + "' ...");
     client.publish(pubTopic,data);
     Serial.println("sended.");

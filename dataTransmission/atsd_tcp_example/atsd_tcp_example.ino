@@ -18,7 +18,7 @@ char pass[] = "ssidPass";       // your network password
 int status = WL_IDLE_STATUS;    // the Wifi radio's status
 
 //mqtt connection settings
-String uniqID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+String entityID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
 String atsdServer = "nur.axibase.com";
 int atsdPort = 8081;
 
@@ -55,9 +55,9 @@ void setup() {
 void loop() {
   if(net.connected()) {
     //the data will be insert with measurement server timestamp
-    String data = "series e:" + uniqID + " m:millis=" + (String)getData();
+    String data = "series e:" + entityID + " m:millis=" + (String)getData();
 //UNCOMMENT TO USE DHT SENSORS:
-//    String data = "series e:" + uniqID + " m:millis=" + (String)getData() + " m:temperature=" + (String)getSensorsData();  
+//    String data = "series e:" + entityID + " m:millis=" + (String)getData() + " m:temperature=" + (String)getSensorsData();  
     Serial.print("sending row: '" + data + "' ...");
     net.println(data);
     net.println();
