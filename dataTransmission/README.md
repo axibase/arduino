@@ -40,6 +40,13 @@ mv arduino-mqtt $ARDUINO_IDE_FOLDER/libraries/MQTT
 ```
 We are working on getting our modifications accepted to main thread, it will available in ArduinoIDE library manager as soon as possible.
 
+##DHT11 sensor
+If you are using DHT11 sensor, you are able to uncomment a few line in code to get data from sensors. Please read comments in sketch to figure out which line should be uncommented. For example:
+```
+//UNCOMMENT TO USE DHT SENSORS:
+//#include "DHT.h"
+```
+
 ##Hardware & Software
 All sketches were tested with [Arduino IDE v1.6.5](https://www.arduino.cc/en/Main/Software) and [arduino uno](http://www.arduino.cc/en/Main/ArduinoBoardUno) with [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield)
 
