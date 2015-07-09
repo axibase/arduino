@@ -1,6 +1,6 @@
 ##Usage
 
-##Hardware & Software
+###Hardware & Software
 All sketches were tested with [Arduino IDE v1.6.5](https://www.arduino.cc/en/Main/Software) and [arduino uno](http://www.arduino.cc/en/Main/ArduinoBoardUno) with a [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield)
 
 ###### Step 1: Download the Axibase Arduino project: 
@@ -10,9 +10,9 @@ git clone https://github.com/axibase/arduino
 
 ###### Step 2: Modify the sketch:
 
-Depending on which protocol you will use, mqtt or tcp, modify one of the following files:
+Depending on which protocol you will use, MQTT or TCP, modify one of the following files:
 
-*mqtt allows bidirectional messages, which allows you to deliver messages to the microcontroller from the ATSD server.*
+*NOTE: MQTT allows bidirectional messages, which allows you to deliver messages to the microcontroller from the ATSD server.*
 
 ```
  ./arduino/dataTransmission/atsd_tcp_example/atsd_tcp_example.ino
@@ -34,13 +34,13 @@ Generate a unique GUID for your microcontroller using the [GUID generator](https
 
 Replace entityID parameter with the generated unique GUID in the sketch that you chose.
 
-*NOTE: Be sure to set a unique entityID for each microcontroller*
+*NOTE: Be sure to set a unique entityID (GUID) for each microcontroller that you are using*
 
 ```
 String entityID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
 ```
 
-######  Step 5: Upload sketch to your device using ArduinoIDE.
+######  Step 5: Upload the sketch to your device using ArduinoIDE.
 
 
 ##MQTT Library
