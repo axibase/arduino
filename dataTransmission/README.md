@@ -45,6 +45,7 @@ If you are using a DHT11 sensor, you can uncomment a few lines in the code to en
 //UNCOMMENT TO USE DHT SENSORS:
 //#include "DHT.h"
 ```
+(See how to connect the sensor)[/dataTransmission#sensors]
 
 ##Hardware & Software
 All sketches were tested with [Arduino IDE v1.6.5](https://www.arduino.cc/en/Main/Software) and [arduino uno](http://www.arduino.cc/en/Main/ArduinoBoardUno) with a [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield)
@@ -67,15 +68,13 @@ Once ATSD is running. Go the the Rules page located on the main menu of the ATSD
 4. Insert the following row: `mosquitto_pub -t iot/${entity}/sub -m "TEST ALERT!"` in each action field on the `Actions` tab and press the `Save` button.
 ![action](https://github.com/axibase/arduino/blob/master/dataTransmission/images/action.png)
 
-5. Navigate to the Portals page located under Admin and create a visualization portal for your data.
+5. Navigate to the Portals page located under Admin on the main menu in ATSD and create a visualization portal for your Arduino data.
 
-[Use ATSD Visualization guides to create the portal](http://axibase.com/products/axibase-time-series-database/visualization/)
-
-[View the Chart Lab example](http://axibase.com/chartlab/fe9ebce1)
+[Use ATSD Visualization guides to create the portal](http://axibase.com/products/axibase-time-series-database/visualization/) or copy paste the example portal configuration as described below, press SAVE once you have configured the portal.
 
 Basic Arduino portal configuration example:
 
-*You can copy paste the following example code, substituting the `entity` value with your `entityID`.*
+*NOTE: You can copy paste the following example code, substituting the `entity` values with your `entityID`.*
 ```
 [configuration]
   height-units = 1
@@ -98,7 +97,11 @@ Basic Arduino portal configuration example:
 ```
 Resulting Portal:
 
+[View the example in Chart Lab](http://axibase.com/chartlab/fe9ebce1)
+
 ![chartLab](https://github.com/axibase/arduino/blob/master/dataTransmission/images/chartLab.png)
+
+Once the portal is created, it can be found in the Portals dropdown list located on the main menu in ATSD.
 
 6. All done. Your arduino device will print an alert message to your serial monitor after each publishing. If you will connect to your mosquitto server using a subscription client:
 ```
@@ -109,9 +112,9 @@ you will see the following messages:
 series e:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx m:millis=304.52
 "TEST ALERT!"
 ```
-You can monitor the data using the created portal. Which can be found in the Portals dropdown list located on the main menu in ATSD.
+You can monitor the data using the visualization portal that you created. Which can be found in the Portals dropdown list located on the main menu in ATSD.
 
-##Sensors
+##DHT11 Sensor
 Connect your DHT11 sensor to your Arduino device as displayed on the following image:
 
 ![dht11](https://github.com/axibase/arduino/blob/master/dataTransmission/images/dht11.png)
