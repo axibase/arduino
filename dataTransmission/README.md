@@ -38,7 +38,7 @@ You can install it by following commands:
 git clone https://github.com/Sild/arduino-mqtt
 mv arduino-mqtt $ARDUINO_IDE_FOLDER/libraries/MQTT
 ```
-We are working on accept our modification to main thread, and it will available by ArduinoIDE libraries manager as soon as posible.
+We are working on getting our modifications accepted to main thread, it will available in ArduinoIDE library manager as soon as possible.
 
 ##Hardware & Software
 All sketches were tested with [Arduino IDE v1.6.5](https://www.arduino.cc/en/Main/Software) and [arduino uno](http://www.arduino.cc/en/Main/ArduinoBoardUno) with [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield)
