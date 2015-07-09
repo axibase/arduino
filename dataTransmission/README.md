@@ -78,7 +78,7 @@ To send data using MQTT, you need to install the [mosquitto](http://mosquitto.or
 
 2. Click the `Import` button and select the [mqttResponseRule.xml](https://github.com/axibase/arduino/blob/master/dataTransmission/mqttResponseRule.xml) file to create the rule.
 
-[You can verify that all the fields of your Rule are completed correctly here](https://github.com/axibase/arduino/blob/master/dataTransmission/atsd_rules.md)
+[You can verify that all the fields of your Rule are completed correctly or setup the rule manually here](https://github.com/axibase/arduino/blob/master/dataTransmission/atsd_rules.md)
 
 3. Navigate to the Portals page located under Admin on the main menu in ATSD and create a visualization portal for your Arduino data.
 
