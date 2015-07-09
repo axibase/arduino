@@ -97,7 +97,7 @@ Basic Arduino portal configuration example:
 ```
 Resulting Portal:
 
-[View the example in Chart Lab](http://axibase.com/chartlab/fe9ebce1)
+[View the example portal in Chart Lab](http://axibase.com/chartlab/fe9ebce1)
 
 ![chartLab](https://github.com/axibase/arduino/blob/master/dataTransmission/images/chartLab.png)
 
