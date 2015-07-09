@@ -79,6 +79,7 @@ series e:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx m:millis=304.52
 
 ##Sensors
 Connect sensor to arduino as on follow image:
+
 ![dht11](https://github.com/axibase/arduino/blob/master/dataTransmission/images/dht11.png)
 
 In sketch, set the right data pin (2 by default):
