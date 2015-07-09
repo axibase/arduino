@@ -20,7 +20,7 @@ char ssid[] = "ssid";           //  your network SSID (name)
 char pass[] = "ssidPass";       // your network password
 ```
 
-######  Step 3: Set uniqID:
+######  Step 3: Set entityID:
 
 Also replace entityID template with your personal ID in selected sketch.
 You can get personal ID using [GUID generator](https://www.guidgenerator.com/online-guid-generator.aspx).
