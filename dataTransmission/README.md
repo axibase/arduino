@@ -20,12 +20,12 @@ char ssid[] = "ssid";           //  your network SSID (name)
 char pass[] = "ssidPass";       // your network password
 ```
 
-######  Step 3: Set uniqID:
+######  Step 3: Set entityID:
 
-Also replace uniqID template with your personal ID in selected sketch.
+Also replace entityID template with your personal ID in selected sketch.
 You can get personal ID using [GUID generator](https://www.guidgenerator.com/online-guid-generator.aspx).
 ```
-String uniqID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+String entityID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
 ```
 
 ######  Step 4: Upload sketch to your device using ArduinoIDE.
@@ -79,7 +79,8 @@ series e:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx m:millis=304.52
 
 ##Sensors
 Connect sensor to arduino as on follow image:
-![dht11]](https://github.com/axibase/arduino/blob/master/dataTransmission/images/dht11.png)
+
+![dht11](https://github.com/axibase/arduino/blob/master/dataTransmission/images/dht11.png)
 
 In sketch, set the right data pin (2 by default):
 ```
