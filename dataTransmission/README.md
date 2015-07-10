@@ -108,7 +108,7 @@ In sketch, be sure to specify the right data pin (2 by default):
 
 [Download](http://axibase.com/products/axibase-time-series-database/download-atsd/) and install [ATSD](http://axibase.com/products/axibase-time-series-database/). 
 
-*To send data using MQTT, you need to install the [mosquitto](http://mosquitto.org/) MQTT-broker and MQTT-clients. 
+* To send data using MQTT, you need to install the [mosquitto](http://mosquitto.org/) MQTT-broker and MQTT-clients. 
 The following commands will install mosquitto-broker and mosquitto-client on your server:
 ```
 sudo apt-get update
