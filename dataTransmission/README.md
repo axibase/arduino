@@ -60,7 +60,27 @@ If you are not using a DHT11-sensor and DHT-library, you should comment out foll
 DHT dht(DHTPIN, DHTTYPE);
 ```
 ```
-String data = "series e:" + entityID + " m:millis=" + (String)getData() + " m:temperature=" + (String)getTemperature() + " m:humidity=" + (String)getHumidity();
+    String temperature = "series e:" + entityID + " m:temperature=" + (String)getTemperature();  
+    Serial.println("sending row: '" + temperature + "' ...");
+    client.publish(pubTopic,temperature);
+    Serial.println("sended.");
+    String humidity = "series e:" + entityID + " m:humidity=" + (String)getHumidity();  
+    Serial.println("sending row: '" + humidity + "' ...");
+    client.publish(pubTopic,humidity);
+    Serial.println("sended.");
+```
+or, if you re using sketch for tcp protocol:
+```
+    String temperature = "series e:" + entityID + " m:temperature=" + (String)getTemperature();  
+    Serial.println("sending row: '" + temperature + "' ...");
+    net.println(temperature);
+    net.println();
+    Serial.println("sended.");
+    String humidity = "series e:" + entityID + " m:humidity=" + (String)getHumidity();  
+    Serial.println("sending row: '" + humidity + "' ...");
+    net.println(humidity);
+    net.println();
+    Serial.println("sended.");
 ```
 ```
 float getTemperature() {
@@ -69,11 +89,6 @@ float getTemperature() {
 float getHumidity() {
   return dht.readHumidity();
 }
-```
-
-And uncomment the following line:
-```
-//    String data = "series e:" + entityID + " m:millis=" + (String)getData();
 ```
 
 ###Connecting the DHT11 Sensor
