@@ -1,5 +1,5 @@
 ###Hardware & Software
-All sketches were tested with [Arduino IDE v1.6.5](https://www.arduino.cc/en/Main/Software) and [arduino uno](http://www.arduino.cc/en/Main/ArduinoBoardUno) with a [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield)
+All sketches were tested with [Arduino IDE v1.6.5](https://www.arduino.cc/en/Main/Software), [arduino uno](http://www.arduino.cc/en/Main/ArduinoBoardUno) with a [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield) and a [DHT11 sensor](http://www.micropik.com/PDF/dht11.pdf).
 
 ###Setup
 
