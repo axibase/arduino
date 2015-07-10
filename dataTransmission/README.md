@@ -109,7 +109,7 @@ float getHumidity() {
     net.println();
     Serial.println("sended.");
 ```
-If you have commented out the lines as intructed above, be sure to add the correct code for your sensor make and model in order for the device to function.
+If you have commented out the lines as intructed above, be sure to add the correct code for your sensor's make and model in order for the device to function.
 
 ###Connecting the DHT11 Sensor
 Connect your DHT11 sensor to your Arduino device as displayed on the following images:
@@ -119,7 +119,7 @@ Connect your DHT11 sensor to your Arduino device as displayed on the following i
 
 In the sketch, be sure to specify the right data pin (2 by default):
 ```
-//#define DHTPIN 2
+#define DHTPIN 2
 ```
 
 ##Test Arduino with your [ATSD](http://axibase.com/products/axibase-time-series-database/) instance
@@ -132,7 +132,7 @@ The following commands will install mosquitto-broker and mosquitto-client on you
 sudo apt-get update
 sudo apt-get install mosquitto mosquitto-clients
 ```
-Download start_mqtt.sh script and make it executable:
+Download `start_mqtt.sh` script and make it executable:
 ```
 wget https://raw.githubusercontent.com/axibase/arduino/master/dataTransmission/start_mqtt.sh
 chmod +x start_mqtt.sh
@@ -141,7 +141,7 @@ To start data transmission from mosquitto, run `start_mqtt.sh` script:
 ```
 ./start_mqtt.sh &
 ```
-This script will start mosquitto-broker and will start sending data to ATSD. We expect that mqtt-broker, mqtt-clients and ATSD are running on one server. Otherwise you need to modify `start_mqtt.sh` script and set right value of `atsdServer` and `mqttServer`:
+This script will start mosquitto-broker and will start sending data to ATSD. We expect that mqtt-broker, mqtt-clients and ATSD are running on the same server. Otherwise you need to modify `start_mqtt.sh` script and set the right value of `atsdServer` and `mqttServer`:
 ```
 atsdServer="localhost"
 mqttServer="localhost"
@@ -193,7 +193,7 @@ You can monitor the data using the visualization portal that you created. Which 
 
 ###Debugging MQTT 
 
-If you will connect to your mosquitto server using a subscription client:
+If you connect to your mosquitto server using a subscription client:
 ```
 mosquitto_sub -t '#'
 ```
