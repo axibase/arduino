@@ -131,7 +131,7 @@ sudo apt-get install mosquitto mosquitto-clients
 ```
 Download start_mqtt.sh script and make it executable:
 ```
-wget https://github.com/axibase/arduino/blob/master/dataTransmission/start_mqtt.sh
+wget https://raw.githubusercontent.com/axibase/arduino/master/dataTransmission/start_mqtt.sh
 chmod +x start_mqtt.sh
 ```
 To start data transmission from mosquitto, run `start_mqtt.sh` script:
