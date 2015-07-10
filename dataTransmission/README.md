@@ -1,3 +1,4 @@
+![connectedDevices](https://github.com/axibase/arduino/blob/master/dataTransmission/images/connectedDevices.png)
 ###Hardware & Software
 All sketches were tested with [Arduino IDE v1.6.5](https://www.arduino.cc/en/Main/Software), [arduino uno](http://www.arduino.cc/en/Main/ArduinoBoardUno) with a [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield), and a [DHT11 sensor](http://www.micropik.com/PDF/dht11.pdf).
 
@@ -11,6 +12,8 @@ git clone https://github.com/axibase/arduino
 ###### Step 2: Modify the sketch:
 
 Depending on which protocol you will use, MQTT or TCP, modify one of the following files:
+
+*To get started we suggest you first try setting up your Arduino using the TCP protocol sketch, then you can try using the MQTT sketch with bidirectional messaging.*
 
 *NOTE: MQTT allows bidirectional messages, which allows you to deliver messages to the microcontroller from the ATSD server.*
 
@@ -51,7 +54,18 @@ git clone https://github.com/Sild/arduino-mqtt
 mv arduino-mqtt $ARDUINO_IDE_FOLDER/libraries/MQTT
 ```
 
-##DHT11 sensor
+There is some limitation to use message body - you can not publish message longer then 80 letter. It causing by buffer size limit. You can increase it by modifying library source code ( `MQTT/src/MQTTClient.h` ):
+```
+#define MQTT_BUFFER_SIZE 128 
+```
+Set ``MQTT_BUFFER_SIZE 256``, for example.
+
+##DHT library & sensor
+You can install DHT library using Library Manager in you ArduinoIDE by typing "DHT11" in search field and press `Install`, or by following commands:
+```
+git clone https://github.com/adafruit/DHT-sensor-library
+mv DHT-sensor-library $ARDUINO_IDE_FOLDER/libraries/DHT_sensor_library
+```
 If you are not using a DHT11-sensor and DHT-library, you should comment out follow lines in the MQTT sketch:
 ```
 #include "DHT.h" //add DHT library
