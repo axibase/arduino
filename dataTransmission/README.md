@@ -1,5 +1,5 @@
 ###Hardware & Software
-All sketches were tested with [Arduino IDE v1.6.5](https://www.arduino.cc/en/Main/Software) and [arduino uno](http://www.arduino.cc/en/Main/ArduinoBoardUno) with a [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield)
+All sketches were tested with [Arduino IDE v1.6.5](https://www.arduino.cc/en/Main/Software), [arduino uno](http://www.arduino.cc/en/Main/ArduinoBoardUno) with a [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield), and a [DHT11 sensor](http://www.micropik.com/PDF/dht11.pdf).
 
 ###Setup
 
@@ -52,13 +52,22 @@ mv arduino-mqtt $ARDUINO_IDE_FOLDER/libraries/MQTT
 ```
 
 ##DHT11 sensor
-If you are not using a DHT11-sensor and DHT-library, you should comment out follow lines from code:
+If you are not using a DHT11-sensor and DHT-library, you should comment out follow lines in the MQTT sketch:
 ```
 #include "DHT.h" //add DHT library
 ```
 ```
 DHT dht(DHTPIN, DHTTYPE);
 ```
+```
+float getTemperature() {
+  return dht.readTemperature();
+}
+float getHumidity() {
+  return dht.readHumidity();
+}
+```
+
 ```
     String temperature = "series e:" + entityID + " m:temperature=" + (String)getTemperature();  
     Serial.println("sending row: '" + temperature + "' ...");
@@ -69,7 +78,8 @@ DHT dht(DHTPIN, DHTTYPE);
     client.publish(pubTopic,humidity);
     Serial.println("sended.");
 ```
-or, if you re using sketch for tcp protocol:
+
+If you are using the TCP protocol sketch, comment out the following lines:
 ```
     String temperature = "series e:" + entityID + " m:temperature=" + (String)getTemperature();  
     Serial.println("sending row: '" + temperature + "' ...");
@@ -82,14 +92,7 @@ or, if you re using sketch for tcp protocol:
     net.println();
     Serial.println("sended.");
 ```
-```
-float getTemperature() {
-  return dht.readTemperature();
-}
-float getHumidity() {
-  return dht.readHumidity();
-}
-```
+
 
 ###Connecting the DHT11 Sensor
 Connect your DHT11 sensor to your Arduino device as displayed on the following image:
@@ -105,17 +108,17 @@ In sketch, be sure to specify the right data pin (2 by default):
 
 [Download](http://axibase.com/products/axibase-time-series-database/download-atsd/) and install [ATSD](http://axibase.com/products/axibase-time-series-database/). 
 
-To send data using MQTT, you need to install the [mosquitto](http://mosquitto.org/) MQTT-broker and MQTT-clients. 
-The following commands will install mosquitto-broker and mosquitto-clients to your server:
+* To send data using MQTT, you need to install the [mosquitto](http://mosquitto.org/) MQTT-broker and MQTT-clients. 
+The following commands will install mosquitto-broker and mosquitto-client on your server:
 ```
 sudo apt-get update
 sudo apt-get install mosquitto mosquitto-clients
 ```
-To start data transmission from mosquitto, run `start_mqtt.sh` script, which is a part of current project:
+To start data transmission from mosquitto, run `start_mqtt.sh` script, which is a part of the project:
 ```
 axibaseArduinoProject/dataTransmission/start_mqtt.sh &
 ```
-This script will start mosquitto-broker and start to send data to ATSD. We expect that mqtt-broker, mqtt-clients and ATSD are running on one server. In other way you should modify `start_mqtt.sh` script and set right value of `atsdServer` and `mqttServer`:
+This script will start mosquitto-broker and will start sending data to ATSD. We expect that mqtt-broker, mqtt-clients and ATSD are running on one server. Otherwise you need to modify `start_mqtt.sh` script and set right value of `atsdServer` and `mqttServer`:
 ```
 atsdServer="localhost"
 mqttServer="localhost"
