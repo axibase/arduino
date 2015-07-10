@@ -1,5 +1,7 @@
+
+![connectedDevices](https://github.com/axibase/arduino/blob/master/dataTransmission/images/connectedDevices.png)
 ###Hardware & Software
-All sketches were tested with [Arduino IDE v1.6.5](https://www.arduino.cc/en/Main/Software), [arduino uno](http://www.arduino.cc/en/Main/ArduinoBoardUno) with a [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield), and a [DHT11 sensor](http://www.micropik.com/PDF/dht11.pdf).
+All sketches were tested using [Arduino IDE v1.6.5](https://www.arduino.cc/en/Main/Software), [arduino uno](http://www.arduino.cc/en/Main/ArduinoBoardUno) with a [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield), and a [DHT11 sensor](http://www.micropik.com/PDF/dht11.pdf).
 
 ###Setup
 
@@ -10,33 +12,33 @@ git clone https://github.com/axibase/arduino
 
 ###### Step 2: Modify the sketch:
 
-Depending on which protocol you will use, MQTT or TCP, modify one of the following files:
+Depending on which protocol you are going to use, MQTT or TCP, modify one of the following files:
 
-*To get started we suggest you first try setting up your Arduino using the TCP protocol sketch, then you can try using the MQTT sketch with bidirectional messaging.*
+To get started we suggest you first try setting up your Arduino using the TCP protocol sketch, then you can try using the MQTT sketch with bidirectional messaging.
 
-*NOTE: MQTT allows bidirectional messages, which allows you to deliver messages to the microcontroller from the ATSD server.*
+*NOTE: MQTT supports bidirectional messaging, which allows you to deliver messages to the microcontroller from the ATSD server.*
 
 ```
  ./arduino/dataTransmission/atsd_tcp_example/atsd_tcp_example.ino
  ./arduino/dataTransmission/atsd_mqtt_example/atsd_mqtt_example.ino
 ```
 
-Replace ssid and pass parameters with actual ssid and password, or modify the sketch to use the [ethernet shield](https://www.arduino.cc/en/Main/ArduinoEthernetShield) instead of [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield).
+Replace ssid and pass parameters with the actual ssid and password, or modify the sketch to use the [ethernet shield](https://www.arduino.cc/en/Main/ArduinoEthernetShield) instead of [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield).
 ```
-char ssid[] = "ssid";           //  your network SSID (name)
+char ssid[] = "ssid";           // your network SSID (name)
 char pass[] = "ssidPass";       // your network password
 ```
 
-######  Step 3: Generate a unique GUID for your microcontroller:
+######  Step 3: Generate a unique GUID for your microcontroller using the following service:
 
-Generate a unique GUID for your microcontroller using the [GUID generator](https://www.guidgenerator.com/online-guid-generator.aspx).
+[GUID generator](https://www.guidgenerator.com/online-guid-generator.aspx)
 
 
 ######  Step 4: Setup your entityID:
 
-Replace entityID parameter with the generated unique GUID in the sketch that you chose.
+Replace entityID parameter with the generated unique GUID in the chosen sketch.
 
-*NOTE: Be sure to set a unique entityID (GUID) for each microcontroller that you are using*
+*NOTE: Be sure to set a unique entityID (GUID) for each microcontroller that you are using.*
 
 ```
 String entityID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
@@ -53,8 +55,19 @@ git clone https://github.com/Sild/arduino-mqtt
 mv arduino-mqtt $ARDUINO_IDE_FOLDER/libraries/MQTT
 ```
 
-##DHT11 sensor
-If you are not using a DHT11-sensor and DHT-library, you should comment out follow lines in the MQTT sketch:
+There is some limitation to use message body - you can not publish message longer then 80 letter. It causing by buffer size limit. You can increase it by modifying library source code ( `MQTT/src/MQTTClient.h` ):
+```
+#define MQTT_BUFFER_SIZE 128 
+```
+Set ``MQTT_BUFFER_SIZE 256``, for example.
+
+##DHT library & sensor
+You can install the DHT library using Library Manager in your ArduinoIDE by typing the model name, for example "DHT11", in the search field and pressing `Install`, or by executing the following commands:
+```
+git clone https://github.com/adafruit/DHT-sensor-library
+mv DHT-sensor-library $ARDUINO_IDE_FOLDER/libraries/DHT_sensor_library
+```
+If you are not using a DHT-sensor and a DHT-library, you should comment out the following lines in the MQTT sketch:
 ```
 #include "DHT.h" //add DHT library
 ```
@@ -81,7 +94,7 @@ float getHumidity() {
     Serial.println("sended.");
 ```
 
-If you are using the TCP protocol sketch, comment out the following lines:
+If you are not using a DHT-sensor and a DHT-library, you should comment out the following lines in the TCP protocol sketch:
 ```
     String temperature = "series e:" + entityID + " m:temperature=" + (String)getTemperature();  
     Serial.println("sending row: '" + temperature + "' ...");
@@ -94,14 +107,14 @@ If you are using the TCP protocol sketch, comment out the following lines:
     net.println();
     Serial.println("sended.");
 ```
-
+If you have commented out the lines as intructed above, be sure to add the correct code for your sensor make and model in order for the device to function.
 
 ###Connecting the DHT11 Sensor
 Connect your DHT11 sensor to your Arduino device as displayed on the following image:
 
 ![dht11](https://github.com/axibase/arduino/blob/master/dataTransmission/images/dht11.png)
 
-In sketch, be sure to specify the right data pin (2 by default):
+In the sketch, be sure to specify the right data pin (2 by default):
 ```
 //#define DHTPIN 2
 ```
@@ -116,9 +129,14 @@ The following commands will install mosquitto-broker and mosquitto-client on you
 sudo apt-get update
 sudo apt-get install mosquitto mosquitto-clients
 ```
-To start data transmission from mosquitto, run `start_mqtt.sh` script, which is a part of the project:
+Download start_mqtt.sh script and make it executable:
 ```
-axibaseArduinoProject/dataTransmission/start_mqtt.sh &
+wget https://raw.githubusercontent.com/axibase/arduino/master/dataTransmission/start_mqtt.sh
+chmod +x start_mqtt.sh
+```
+To start data transmission from mosquitto, run `start_mqtt.sh` script:
+```
+./start_mqtt.sh &
 ```
 This script will start mosquitto-broker and will start sending data to ATSD. We expect that mqtt-broker, mqtt-clients and ATSD are running on one server. Otherwise you need to modify `start_mqtt.sh` script and set right value of `atsdServer` and `mqttServer`:
 ```
