@@ -61,6 +61,7 @@ void setup() {
 void loop() {
   if(client.connected()) {
 //    the data will be insert with measurement server timestamp
+//  Any data row that will be publish can not contain more then 80 letters.
     String data = "series e:" + entityID + " m:millis=" + (String)getData();
     Serial.println("sending row: '" + data + "' ...");
     client.publish(pubTopic,data);
