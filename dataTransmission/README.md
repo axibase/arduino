@@ -57,6 +57,9 @@ If you are not using a DHT11-sensor and DHT-library, you should comment out foll
 #include "DHT.h" //add DHT library
 ```
 ```
+DHT dht(DHTPIN, DHTTYPE);
+```
+```
 float getTemperature() {
   return dht.readTemperature();
 }
@@ -64,9 +67,7 @@ float getHumidity() {
   return dht.readHumidity();
 }
 ```
-```
-DHT dht(DHTPIN, DHTTYPE);
-```
+
 ```
     String temperature = "series e:" + entityID + " m:temperature=" + (String)getTemperature();  
     Serial.println("sending row: '" + temperature + "' ...");
