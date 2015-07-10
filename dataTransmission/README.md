@@ -52,10 +52,28 @@ mv arduino-mqtt $ARDUINO_IDE_FOLDER/libraries/MQTT
 ```
 
 ##DHT11 sensor
-If you are using a DHT11 sensor, you can uncomment a few lines in the code to enable data transmission from the sensors. Read comments in the sketch to see which line should be uncommented. For example:
+If you are not using a DHT11-sensor and DHT-library, you should comment out follow lines from code:
 ```
-//UNCOMMENT TO USE DHT SENSORS:
-//#include "DHT.h"
+#include "DHT.h" //add DHT library
+```
+```
+DHT dht(DHTPIN, DHTTYPE);
+```
+```
+String data = "series e:" + entityID + " m:millis=" + (String)getData() + " m:temperature=" + (String)getTemperature() + " m:humidity=" + (String)getHumidity();
+```
+```
+float getTemperature() {
+  return dht.readTemperature();
+}
+float getHumidity() {
+  return dht.readHumidity();
+}
+```
+
+And uncomment the following line:
+```
+//    String data = "series e:" + entityID + " m:millis=" + (String)getData();
 ```
 
 ###Connecting the DHT11 Sensor
@@ -72,7 +90,21 @@ In sketch, be sure to specify the right data pin (2 by default):
 
 [Download](http://axibase.com/products/axibase-time-series-database/download-atsd/) and install [ATSD](http://axibase.com/products/axibase-time-series-database/). 
 
-To send data using MQTT, you need to install the [mosquitto](http://mosquitto.org/) MQTT-broker. Installation guide is available on the [official mosquitto download page](http://mosquitto.org/download/).
+To send data using MQTT, you need to install the [mosquitto](http://mosquitto.org/) MQTT-broker and MQTT-clients. 
+The following commands will install mosquitto-broker and mosquitto-clients to your server:
+```
+sudo apt-get update
+sudo apt-get install mosquitto mosquitto-clients
+```
+To start data transmission from mosquitto, run `start_mqtt.sh` script, which is a part of current project:
+```
+axibaseArduinoProject/dataTransmission/start_mqtt.sh &
+```
+This script will start mosquitto-broker and start to send data to ATSD. We expect that mqtt-broker, mqtt-clients and ATSD are running on one server. In other way you should modify `start_mqtt.sh` script and set right value of `atsdServer` and `mqttServer`:
+```
+atsdServer="localhost"
+mqttServer="localhost"
+```
 
 * Once ATSD is running, navigate to the Rules page located on the main menu of the ATSD UI to a create rule in the [ATSD Rule Engine](http://axibase.com/products/axibase-time-series-database/rule-engine/), that will send MQTT messages when events occur.
 
@@ -126,14 +158,3 @@ you will see the following messages:
 series e:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx m:millis=304.52
 "TEST ALERT!"
 ```
-
-
-
-
-
-
-
-
-
-
-
