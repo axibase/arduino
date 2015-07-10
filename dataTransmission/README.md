@@ -110,10 +110,11 @@ If you are not using a DHT-sensor and a DHT-library, you should comment out the 
 If you have commented out the lines as intructed above, be sure to add the correct code for your sensor make and model in order for the device to function.
 
 ###Connecting the DHT11 Sensor
-Connect your DHT11 sensor to your Arduino device as displayed on the following image:
+Connect your DHT11 sensor to your Arduino device as displayed on the following images:
 
 ![dht11](https://github.com/axibase/arduino/blob/master/dataTransmission/images/dht11.png)
 ![unoScheme](https://github.com/axibase/arduino/blob/master/dataTransmission/images/unoScheme.png)
+
 In the sketch, be sure to specify the right data pin (2 by default):
 ```
 //#define DHTPIN 2
