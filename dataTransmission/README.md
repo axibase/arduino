@@ -53,7 +53,12 @@ git clone https://github.com/Sild/arduino-mqtt
 mv arduino-mqtt $ARDUINO_IDE_FOLDER/libraries/MQTT
 ```
 
-##DHT11 sensor
+##DHT11 sensor & library
+You can install DHT library using Library Manager in you ArduinoIDE by typing "DHT11" in search field and press `Install`, or by following commands:
+```
+git clone https://github.com/adafruit/DHT-sensor-library
+mv DHT-sensor-library $ARDUINO_IDE_FOLDER/libraries/DHT_sensor_library
+```
 If you are not using a DHT11-sensor and DHT-library, you should comment out follow lines in the MQTT sketch:
 ```
 #include "DHT.h" //add DHT library
