@@ -31,7 +31,7 @@ char pass[] = "ssidPass";       // your network password
 
 ######  Step 3: Generate a unique GUID for your microcontroller using the following service:
 
-[GUID generator](https://www.guidgenerator.com/online-guid-generator.aspx).
+[GUID generator](https://www.guidgenerator.com/online-guid-generator.aspx)
 
 
 ######  Step 4: Setup your entityID:
@@ -94,7 +94,7 @@ float getHumidity() {
     Serial.println("sended.");
 ```
 
-If you are using the TCP protocol sketch, comment out the following lines:
+If you are not using a DHT-sensor and a DHT-library, you should comment out the following lines in the TCP protocol sketch:
 ```
     String temperature = "series e:" + entityID + " m:temperature=" + (String)getTemperature();  
     Serial.println("sending row: '" + temperature + "' ...");
@@ -107,7 +107,7 @@ If you are using the TCP protocol sketch, comment out the following lines:
     net.println();
     Serial.println("sended.");
 ```
-
+If you have commented out the lines as intructed above, be sure to add the correct code for your sensor make and model in order for the device to function.
 
 ###Connecting the DHT11 Sensor
 Connect your DHT11 sensor to your Arduino device as displayed on the following image:
