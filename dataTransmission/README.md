@@ -122,7 +122,7 @@ In the sketch, be sure to specify the right data pin (2 by default):
 
 ##Test Arduino with your [ATSD](http://axibase.com/products/axibase-time-series-database/) instance
 
-[Download](http://axibase.com/products/axibase-time-series-database/download-atsd/) and install [ATSD](http://axibase.com/products/axibase-time-series-database/). 
+####MQTT
 
 * To send data using MQTT, you need to install the [mosquitto](http://mosquitto.org/) MQTT-broker and MQTT-clients. 
 The following commands will install mosquitto-broker and mosquitto-client on your server:
@@ -144,6 +144,9 @@ This script will start mosquitto-broker and will start sending data to ATSD. We 
 atsdServer="localhost"
 mqttServer="localhost"
 ```
+####ATSD
+
+[Download](http://axibase.com/products/axibase-time-series-database/download-atsd/) and install [ATSD](http://axibase.com/products/axibase-time-series-database/). 
 
 * Once ATSD is running, navigate to the Rules page located on the main menu of the ATSD UI to a create rule in the [ATSD Rule Engine](http://axibase.com/products/axibase-time-series-database/rule-engine/), that will send MQTT messages when events occur.
 
