@@ -57,6 +57,14 @@ If you are not using a DHT11-sensor and DHT-library, you should comment out foll
 #include "DHT.h" //add DHT library
 ```
 ```
+float getTemperature() {
+  return dht.readTemperature();
+}
+float getHumidity() {
+  return dht.readHumidity();
+}
+```
+```
 DHT dht(DHTPIN, DHTTYPE);
 ```
 ```
@@ -82,14 +90,7 @@ or, if you re using sketch for tcp protocol:
     net.println();
     Serial.println("sended.");
 ```
-```
-float getTemperature() {
-  return dht.readTemperature();
-}
-float getHumidity() {
-  return dht.readHumidity();
-}
-```
+
 
 ###Connecting the DHT11 Sensor
 Connect your DHT11 sensor to your Arduino device as displayed on the following image:
