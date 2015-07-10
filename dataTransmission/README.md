@@ -53,6 +53,12 @@ git clone https://github.com/Sild/arduino-mqtt
 mv arduino-mqtt $ARDUINO_IDE_FOLDER/libraries/MQTT
 ```
 
+There is some limitation to use message body - you can not publish message longer then 80 letter. It causing by buffer size limit. You can increase it by modifying library source code ( `MQTT/src/MQTTClient.h` ):
+```
+#define MQTT_BUFFER_SIZE 128 
+```
+Set ``MQTT_BUFFER_SIZE 256``, for example.
+
 ##DHT library & sensor
 You can install DHT library using Library Manager in you ArduinoIDE by typing "DHT11" in search field and press `Install`, or by following commands:
 ```
