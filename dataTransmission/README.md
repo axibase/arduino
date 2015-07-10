@@ -129,9 +129,14 @@ The following commands will install mosquitto-broker and mosquitto-client on you
 sudo apt-get update
 sudo apt-get install mosquitto mosquitto-clients
 ```
-To start data transmission from mosquitto, run `start_mqtt.sh` script, which is a part of the project:
+Download start_mqtt.sh script and make it executable:
 ```
-axibaseArduinoProject/dataTransmission/start_mqtt.sh &
+wget https://github.com/axibase/arduino/blob/master/dataTransmission/start_mqtt.sh
+chmod +x start_mqtt.sh
+```
+To start data transmission from mosquitto, run `start_mqtt.sh` script:
+```
+./start_mqtt.sh &
 ```
 This script will start mosquitto-broker and will start sending data to ATSD. We expect that mqtt-broker, mqtt-clients and ATSD are running on one server. Otherwise you need to modify `start_mqtt.sh` script and set right value of `atsdServer` and `mqttServer`:
 ```
