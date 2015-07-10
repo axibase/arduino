@@ -12,6 +12,8 @@ git clone https://github.com/axibase/arduino
 
 Depending on which protocol you will use, MQTT or TCP, modify one of the following files:
 
+*To get started we suggest you first try setting up your Arduino using the TCP protocol sketch, then you can try using the MQTT sketch with bidirectional messaging.*
+
 *NOTE: MQTT allows bidirectional messages, which allows you to deliver messages to the microcontroller from the ATSD server.*
 
 ```
