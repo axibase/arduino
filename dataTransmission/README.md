@@ -113,7 +113,7 @@ If you have commented out the lines as intructed above, be sure to add the corre
 Connect your DHT11 sensor to your Arduino device as displayed on the following image:
 
 ![dht11](https://github.com/axibase/arduino/blob/master/dataTransmission/images/dht11.png)
-
+![unoScheme](https://github.com/axibase/arduino/blob/master/dataTransmission/images/unoScheme.png)
 In the sketch, be sure to specify the right data pin (2 by default):
 ```
 //#define DHTPIN 2
