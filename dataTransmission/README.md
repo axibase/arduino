@@ -67,7 +67,9 @@ You can install the DHT library using Library Manager in your ArduinoIDE by typi
 git clone https://github.com/adafruit/DHT-sensor-library
 mv DHT-sensor-library $ARDUINO_IDE_FOLDER/libraries/DHT_sensor_library
 ```
-If you are not using a DHT-sensor and a DHT-library, you should comment out the following lines in the MQTT sketch:
+If you are not using a DHT-sensor and a DHT-library, you should comment out the following lines in your respective sketch:
+
+**MQTT:**
 ```
 #include "DHT.h" //add DHT library
 ```
@@ -94,7 +96,7 @@ float getHumidity() {
     Serial.println("sended.");
 ```
 
-If you are not using a DHT-sensor and a DHT-library, you should comment out the following lines in the TCP protocol sketch:
+**TCP:**
 ```
     String temperature = "series e:" + entityID + " m:temperature=" + (String)getTemperature();  
     Serial.println("sending row: '" + temperature + "' ...");
