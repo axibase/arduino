@@ -110,7 +110,7 @@ Once the portal is created, it can be found in the Portals dropdown list located
 You can monitor the data using the visualization portal that you created. Which can be found in the Portals dropdown list located on the main menu in ATSD.
 
 ####Configure java application
-Modify [application](https://github.com/axibase/arduino/blob/master/dataTransmission/atsd_serial_example/SerialReader.java) to specify the right ATSD hostname and port:
+Modify the java [application](https://github.com/axibase/arduino/blob/master/dataTransmission/atsd_serial_example/SerialReader.java), specifying the correct ATSD hostname and port:
 ```
 private static final String host = "localhost";
 private static final int port = 8081;
@@ -118,20 +118,20 @@ private static final int port = 8081;
 
 ####Compile and Run java application
 
-To compile, go to source folder:
+To compile, navigate to the source folder:
 ```
 cd ./arduino/dataTransmission/atsd_serial_example
 ```
-And run the following command:
+Then run the following command:
 ```
 javac -cp ".:RXTXcomm.jar" SerialReader.java
 ```
 
-To run application:
+Run the application:
 ```
 java -cp ".:RXTXcomm.jar" SerialReader.java "/dev/ttyACMx"
 ```
-Where ```/dev/ttyACMx``` is a path to arduino serial port. ```/dev/ttyACM0``` is default.
+Where ```/dev/ttyACMx``` is a path to the arduino serial port. ```/dev/ttyACM0``` is the default location.
 
 You will see the following messages:
 ```
@@ -139,4 +139,4 @@ sended: series e:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx m:millis=284.56
 sended: series e:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx m:millis=286.55
 sended: series e:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx m:millis=289.09
 ```
-That mean your data sending successfully.
+This means that your data is sent successfully.
