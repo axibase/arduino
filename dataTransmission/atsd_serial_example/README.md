@@ -135,8 +135,8 @@ Where ```/dev/ttyACMx``` is a path to the arduino serial port. ```/dev/ttyACM0``
 
 You will see the following messages:
 ```
-sended: series e:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx m:millis=284.56
-sended: series e:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx m:millis=286.55
-sended: series e:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx m:millis=289.09
+sended: series e:9aedc21d-d303-488d-9db4-78a1baed303f m:millis=284.56
+sended: series e:9aedc21d-d303-488d-9db4-78a1baed303f m:millis=286.55
+sended: series e:9aedc21d-d303-488d-9db4-78a1baed303f m:millis=289.09
 ```
 This means that your data is sent successfully.
