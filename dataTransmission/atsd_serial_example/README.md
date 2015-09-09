@@ -118,7 +118,7 @@ private static final int port = 8081;
 
 ####Compile and Run java application
 
-To compile, navigate to the source folder:
+To compile, navigate to the project folder:
 ```
 cd ./arduino/dataTransmission/atsd_serial_example
 ```
@@ -129,9 +129,9 @@ javac -cp ".:RXTXcomm.jar" SerialReader.java
 
 Run the application:
 ```
-java -cp ".:RXTXcomm.jar" SerialReader.java "/dev/ttyACMx"
+java -cp ".:RXTXcomm.jar" SerialReader "/dev/ttyACMx"
 ```
-Where ```/dev/ttyACMx``` is a path to the arduino serial port. ```/dev/ttyACM0``` is the default location.
+Where ```/dev/ttyACMx``` is a path to the arduino serial port. ```/dev/ttyACM0``` is the default path.
 
 You will see the following messages:
 ```
@@ -139,4 +139,4 @@ sended: series e:9aedc21d-d303-488d-9db4-78a1baed303f m:millis=284.56
 sended: series e:9aedc21d-d303-488d-9db4-78a1baed303f m:millis=286.55
 sended: series e:9aedc21d-d303-488d-9db4-78a1baed303f m:millis=289.09
 ```
-This means that your data is sent successfully.
+This means that your data is being sent successfully.
