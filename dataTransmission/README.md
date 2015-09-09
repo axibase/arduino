@@ -3,6 +3,9 @@
 ###Hardware & Software
 All sketches were tested using [Arduino IDE v1.6.5](https://www.arduino.cc/en/Main/Software), [arduino uno](http://www.arduino.cc/en/Main/ArduinoBoardUno) with a [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield), and a [DHT11 sensor](http://www.micropik.com/PDF/dht11.pdf).
 
+###### If You have not any shield to connect arduino to Internet, You are able to use a serial port and [simple java application](https://github.com/axibase/arduino/blob/master/dataTransmission/atsd_serial_example/SerialReader.java) to resend data to ATSD. See [atsd_serial_example](https://github.com/axibase/arduino/tree/master/dataTransmission/atsd_serial_example).
+
+
 ###Setup
 
 ###### Step 1: Download the Axibase Arduino project: 
