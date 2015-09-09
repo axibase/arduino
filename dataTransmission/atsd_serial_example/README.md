@@ -16,23 +16,19 @@ git clone https://github.com/axibase/arduino
 
 ######  Step 3: Setup your entityID:
 
-Replace entityID parameter:
-
-```
-String entityID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
-```
-
-with the generated unique GUID in the following sketch:
-
+In the following sketch:
 ```
  ./arduino/dataTransmission/atsd_serial_example/atsd_serial_example.ino
 ```
+Replace entityID parameter:
+```
+String entityID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+```
+with the generated unique GUID 
 
 *NOTE: Be sure to set a unique entityID (GUID) for each microcontroller that you are using.*
 
-
 ######  Step 4: Upload the sketch to your device using ArduinoIDE.
-
 
 ##DHT library & sensor
 You can install the DHT library using Library Manager in your ArduinoIDE by typing the model name, for example "DHT11", in the search field and pressing `Install`, or by executing the following commands:
