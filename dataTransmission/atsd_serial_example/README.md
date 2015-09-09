@@ -131,7 +131,7 @@ To run application:
 ```
 java -cp ".:RXTXcomm.jar" SerialReader.java "/dev/ttyACMx"
 ```
-Where ```/dev/ttyACMx``` is a path to arduino serial port. Using ```/dev/ttyACM0``` by default.
+Where ```/dev/ttyACMx``` is a path to arduino serial port. ```/dev/ttyACM0``` is default.
 
 You will see the following messages:
 ```
