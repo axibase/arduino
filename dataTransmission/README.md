@@ -71,8 +71,6 @@ git clone https://github.com/adafruit/DHT-sensor-library
 mv DHT-sensor-library $ARDUINO_IDE_FOLDER/libraries/DHT_sensor_library
 ```
 If you are not using a DHT-sensor and a DHT-library, you should comment out the following lines in your respective sketch:
-
-**MQTT:**
 ```
 #include "DHT.h" //add DHT library
 ```
@@ -87,6 +85,9 @@ float getHumidity() {
   return dht.readHumidity();
 }
 ```
+
+**MQTT:**
+
 
 ```
     String temperature = "series e:" + entityID + " m:temperature=" + (String)getTemperature();  
