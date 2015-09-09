@@ -76,37 +76,9 @@ In the sketch, be sure to specify the right data pin (2 by default):
 
 ##Test Arduino with your [ATSD](http://axibase.com/products/axibase-time-series-database/) instance
 
-####MQTT
-
-* To send data using MQTT, you need to install the [mosquitto](http://mosquitto.org/) MQTT-broker and MQTT-clients. 
-The following commands will install mosquitto-broker and mosquitto-client on your server:
-```
-sudo apt-get update
-sudo apt-get install mosquitto mosquitto-clients
-```
-Download `start_mqtt.sh` script and make it executable:
-```
-wget https://raw.githubusercontent.com/axibase/arduino/master/dataTransmission/start_mqtt.sh
-chmod +x start_mqtt.sh
-```
-To start data transmission from mosquitto, run `start_mqtt.sh` script:
-```
-./start_mqtt.sh &
-```
-This script will start mosquitto-broker and will start sending data to ATSD. We expect that mqtt-broker, mqtt-clients and ATSD are running on the same server. Otherwise you need to modify `start_mqtt.sh` script and set the right value of `atsdServer` and `mqttServer`:
-```
-atsdServer="localhost"
-mqttServer="localhost"
-```
 ####ATSD
 
 [Download](http://axibase.com/products/axibase-time-series-database/download-atsd/) and install [ATSD](http://axibase.com/products/axibase-time-series-database/). 
-
-* Once ATSD is running, navigate to the Rules page located on the main menu of the ATSD UI to a create rule in the [ATSD Rule Engine](http://axibase.com/products/axibase-time-series-database/rule-engine/), that will send MQTT messages when events occur.
-
-* Click the `Import` button and select the [mqttResponseRule.xml](https://github.com/axibase/arduino/blob/master/dataTransmission/mqttResponseRule.xml) file to create the rule.
-
-[You can verify that all the fields of your Rule are completed correctly or setup the rule manually here](https://github.com/axibase/arduino/blob/master/dataTransmission/atsd_rules.md)
 
 * Navigate to the Portals page located under Admin on the main menu in ATSD and create a visualization portal for your Arduino data.
 
@@ -139,18 +111,36 @@ Resulting Portal:
 
 Once the portal is created, it can be found in the Portals dropdown list located on the main menu in ATSD.
 
-* All done. Your arduino device will print an alert message to your serial monitor after each iteration. 
-
 You can monitor the data using the visualization portal that you created. Which can be found in the Portals dropdown list located on the main menu in ATSD.
 
-###Debugging MQTT 
+####Configure java application
+Modify [application](https://github.com/axibase/arduino/blob/master/dataTransmission/atsd_serial_example/SerialReader.java) to specify the right ATSD hostname and port:
+```
+private static final String host = "localhost";
+private static final int port = 8081;
+```
 
-If you connect to your mosquitto server using a subscription client:
+####Compile and Run java application
+
+To compile, go to source folder:
 ```
-mosquitto_sub -t '#'
+cd ./arduino/dataTransmission/atsd_serial_example
 ```
-you will see the following messages:
+And run the following command:
 ```
-series e:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx m:millis=304.52
-"TEST ALERT!"
+javac -cp ".:RXTXcomm.jar" SerialReader.java
 ```
+
+To run application:
+```
+java -cp ".:RXTXcomm.jar" SerialReader.java "/dev/ttyACMx"
+```
+Where ```/dev/ttyACMx``` is a path to arduino serial port. Using ```/dev/ttyACM0``` by default.
+
+You will see the following messages:
+```
+sended: series e:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx m:millis=284.56
+sended: series e:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx m:millis=286.55
+sended: series e:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx m:millis=289.09
+```
+That mean your data sending successfully.
