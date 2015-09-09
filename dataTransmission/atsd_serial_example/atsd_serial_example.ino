@@ -23,10 +23,10 @@ void loop() {
     Serial.println(data);
 
     String temperature = "series e:" + entityID + " m:temperature=" + (String)getTemperature();  
-//    Serial.println(temperature);
+    Serial.println(temperature);
     
     String humidity = "series e:" + entityID + " m:humidity=" + (String)getHumidity();  
-//    Serial.println(humidity);
+    Serial.println(humidity);
     delay(1000);
 }
 
