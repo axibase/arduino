@@ -19,7 +19,7 @@ int status = WL_IDLE_STATUS;    // the Wifi radio's status
 
 //mqtt connection settings
 String entityID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
-String atsdServer = "nur.axibase.com";
+String atsdServer = "atsd";
 int atsdPort = 8081;
 
 
