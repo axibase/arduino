@@ -21,7 +21,7 @@ int status = WL_IDLE_STATUS;   // the Wifi radio's status
 
 //mqtt connection settings
 String entityID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
-String mqttServer = "atsd";
+String mqttServer = "server_name";
 int mqttServerPort = 1883;
 String pubTopic = "iot/" + entityID + "/pub";
 String subTopic = "iot/" + entityID + "/sub";
