@@ -3,6 +3,9 @@
 ###Hardware & Software
 All sketches were tested using [Arduino IDE v1.6.5](https://www.arduino.cc/en/Main/Software), [arduino uno](http://www.arduino.cc/en/Main/ArduinoBoardUno) with a [wifi shield](https://www.arduino.cc/en/Main/ArduinoWiFiShield), and a [DHT11 sensor](http://www.micropik.com/PDF/dht11.pdf).
 
+If you do not have a shield connecting the arduino to the Internet, you can use a serial port and a [simple java application](https://github.com/axibase/arduino/blob/master/dataTransmission/atsd_serial_example/SerialReader.java)  that will send the data into ATSD. See [atsd_serial_example](https://github.com/axibase/arduino/tree/master/dataTransmission/atsd_serial_example).
+
+
 ###Setup
 
 ###### Step 1: Download the Axibase Arduino project: 
@@ -68,8 +71,6 @@ git clone https://github.com/adafruit/DHT-sensor-library
 mv DHT-sensor-library $ARDUINO_IDE_FOLDER/libraries/DHT_sensor_library
 ```
 If you are not using a DHT-sensor and a DHT-library, you should comment out the following lines in your respective sketch:
-
-**MQTT:**
 ```
 #include "DHT.h" //add DHT library
 ```
@@ -84,6 +85,9 @@ float getHumidity() {
   return dht.readHumidity();
 }
 ```
+
+**MQTT:**
+
 
 ```
     String temperature = "series e:" + entityID + " m:temperature=" + (String)getTemperature();  
