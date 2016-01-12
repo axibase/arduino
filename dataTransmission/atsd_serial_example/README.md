@@ -118,7 +118,11 @@ private static final int port = 8081;
 
 ####Compile and Run java application
 
-Make sure ```librxtx-java``` library is installed.
+Make sure ```rxtx-java``` library is installed. For example, in ubuntu:
+
+```
+sudo apt-get install librxtx-java
+```
 
 
 To compile, navigate to the project folder:
