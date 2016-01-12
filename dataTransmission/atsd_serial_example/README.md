@@ -118,6 +118,9 @@ private static final int port = 8081;
 
 ####Compile and Run java application
 
+Make sure ```librxtx-java``` library is installed.
+
+
 To compile, navigate to the project folder:
 ```
 cd ./arduino/dataTransmission/atsd_serial_example
